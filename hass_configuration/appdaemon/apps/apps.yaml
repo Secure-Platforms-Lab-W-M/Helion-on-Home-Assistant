@@ -1,0 +1,5 @@
+# change param1 to the directory where helion/scripts is location on your machine
+hello_world:
+  module: helion
+  class: RunHelion
+  param1: /Your/Path/To/CSci435-Fall21-Helion/helion/scripts

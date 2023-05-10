@@ -1,0 +1,1552 @@
+title: Helion
+views:
+  - path: default_view
+    title: Helion
+    panel: true
+    badges: []
+    cards:
+    #####################
+    #    Custom Card    #
+    #####################
+
+      - type: grid
+        gridrows: auto auto auto
+        gridcols: 30% 30% 30%
+        columns: 3
+        square: false
+        cards:
+          - type: vertical-stack
+            title: 'Settings'
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: entities
+                    entities:
+                      - entity: input_select.methods
+              - type: vertical-stack
+                cards:
+                  - type: entities
+                    entities:
+                      - entity: input_select.models
+              - type: vertical-stack
+                cards:
+                  - type: entities
+                    entities:
+                      - entity: input_select.flavors
+          - type: vertical-stack
+            title: 'Input'
+            cards:
+
+      #######################
+      #   Air Conditioner   #
+      #######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.air_conditioner_thermostat
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ########################
+          #      Air Cooler      #
+          ########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.air_cooler
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+
+          ########################
+          #     Air Purifier     #
+          ########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.air_purifier
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.air_purifier_air_quality
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ########################
+          #     Audio Player     #
+          ########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.audio_player
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.audio_player_mute
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.audio_player_volume
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ########################
+          #     Audio Sensor     #
+          ########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.audio_sensor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.audio_sensor_audio
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #########################
+          #     Beacon Device     #
+          #########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.beacon_device_presence
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ##########################
+          # Blood Pressure Monitor #
+          ##########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.blood_pressure_monitor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.blood_pressure_monitor_pressure
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #####################
+          #    Bread Maker    #
+          #####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.bread_maker
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ####################
+          #      Button      #
+          ####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.button_button
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ##########################
+          #     Car Automation     #
+          ##########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.car_automation_presence
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #######################
+          #    Clothes Dryer    #
+          #######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.clothes_dryer
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.clothes_dryer_mode
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.clothes_dryer_lint
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.clothes_dryer_completion
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #######################
+          #     CO Detector     #
+          #######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.co_detector_carbon_monoxide
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ############################
+          #     CO Detector Alarm    #
+          ############################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.co_detector_alarm
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ########################
+          #    Car Automation    #
+          ########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.car_automation
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ######################
+          #    Coffee Maker    #
+          ######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.coffee_maker
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.coffee_maker_temperature
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.coffee_maker_water
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ######################
+          #   Contact Sensor   #
+          ######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.contact_sensor_contact
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ######################
+          #     Dishwasher     #
+          ######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.dishwasher
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.dishwasher_mode
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.dishwasher_weight
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ###################
+          #    Door Lock    #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                        - entity: input_select.door_lock_auto_lock
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                        - entity: input_select.door_lock_child_lock
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                        - entity: input_select.door_lock_lock
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                        - entity: input_select.door_lock_tamper
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                        - entity: input_select.door_lock_battery
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+
+          #####################
+          #    Door Sensor    #
+          #####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.door_sensor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.door_sensor_contact
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ##################
+          #    DoorBell    #
+          ##################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.doorbell_button
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.doorbell_chime
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #####################
+          #   Dust Detector   #
+          #####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.dust_detector
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.dust_detector_dust
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ######################
+          #  Electric Blanket  #
+          ######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.electric_blanket
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ######################
+          #    Energy Meter    #
+          ######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.energy_meter_energy
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.energy_meter_mode
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ######################
+          #    External API    #
+          ######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.external_api_news
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.external_api_order
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.external_api_traffic
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #############
+          #    Fan    #
+          #############
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.fan
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.fan_speed
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ######################
+          # Garage Door Opener #
+          ######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.garage_door_opener_contact
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.garage_door_opener_signal_strength
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ######################
+          #  Garden Sprinkler  #
+          ######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.garden_sprinkler
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ####################
+          #    Gas Sensor    #
+          ####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.gas_sensor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.gas_sensor_odor_level
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+          #########################
+          #    Gas Sensor Alarm   #
+          #########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.gas_sensor_alarm
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+
+          ###################
+          #    Gas Stove    #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.gas_stove
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ########################
+          # Glass Break Detector #
+          ########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.glass_break_detector
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.glass_break_detector_shock
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ################
+          #    Heater    #
+          ################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.heater
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ####################
+          #    Humidifier    #
+          ####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.humidifier
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ########################
+          #    Humidity Sensor   #
+          ########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.humidity_sensor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.humidity_sensor_humidity
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ########################
+          #  Illuminance Sensor  #
+          ########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.illuminance_sensor_illuminance
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #######################
+          #  Induction Cooktop  #
+          #######################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.induction_cooktop
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ####################
+          #    Irrigation    #
+          ####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.irrigation
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ####################
+          #    Light Bulb    #
+          ####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.light_bulb
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.light_bulb_mode
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.light_bulb_color_value
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #########################
+          #    Lighting Remote    #
+          #########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.lighting_remote
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ####################
+          #  Microwave Oven  #
+          ####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.microwave_oven
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #####################
+          #  Moisture Sensor  #
+          #####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.moisture_sensor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.moisture_sensor_water
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #####################
+          #   Motion Sensor   #
+          #####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.motion_sensor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.motion_sensor_motion
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ################
+          #     Null     #
+          ################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.null_location_mode
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.null_time
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.null_timer
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ####################
+          #    Oil Warmer    #
+          ####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.oil_warmer
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ##############
+          #    Oven    #
+          ##############
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.oven
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.oven_mode
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ###################
+          #    PH Sensor    #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.ph_sensor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.ph_sensor_ph
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #############
+          #   Phone   #
+          #############
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.phone_notification
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          - type: vertical-stack
+            title: 'Output'
+            cards:
+
+          ###################
+          # Presence Sensor #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.presence_sensor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.presence_sensor_presence
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ###################
+          #    Projector    #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.projector
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ###################
+          #  Pulse Monitor  #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.pulse_monitor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.pulse_monitor_pulse
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ##################
+          #  Refrigerator  #
+          ##################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.refrigerator
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.refrigerator_mode
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.refrigerator_temperature
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.refrigerator_filter_status
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.refrigerator_contact
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+          ############################
+          #  Refrigerator Thermostat #
+          ############################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.refrigerator_thermostat
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ##################
+          #  Robot Vacuum  #
+          ##################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.robot_vacuum
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ####################
+          #  Security Alarm  #
+          ####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.security_alarm_mode
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.security_alarm_alarm
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #####################
+          #  Security Camera  #
+          #####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.security_camera
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.security_camera_image
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.security_camera_motion
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.security_camera_sound
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.security_camera_video
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #####################
+          #  Security System  #
+          #####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.security_system
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.security_system_mode
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ###################
+          #  Shades/Blinds  #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.shades_blinds_contact
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.shades_blinds_three_axis
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ###################
+          #  Sleep Monitor  #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.sleep_monitor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.sleep_monitor_sleeping
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #####################
+          #  Smart Assistant  #
+          #####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.smart_assistant
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.smart_assistant_voice
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.smart_assistant_notification
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #####################
+          #   Smart Battery   #
+          #####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.smart_battery_battery
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ##################
+          #  Smart Mirror  #
+          ##################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.smart_mirror
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ##############
+          #  Smart TV  #
+          ##############
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.smart_tv
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.smart_tv_channel
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ####################
+          #  Smoke Detector  #
+          ####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.smoke_detector_battery
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.smoke_detector_smoke
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.smoke_detector_tamper
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+          #################
+          #    Speaker    #
+          #################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.speaker
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.speaker_volume
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.speaker_mute
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ###################
+          #    Sprinkler    #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.sprinkler
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ###################
+          #     Switches    #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.switches
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ########################
+          #  Temperature Sensor  #
+          ########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.temperature_sensor
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.temperature_sensor_temperature
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ##################
+          #   Thermostat   #
+          ##################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.thermostat_thermostat
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.thermostat_cool_point
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ################
+          #    Washer    #
+          ################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.washer
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.washer_completion
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ##################
+          #  Water Heater  #
+          ##################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.water_heater
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #########################
+          #  Water Leak Detector  #
+          #########################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: switch.water_leak_detector
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.water_leak_detector_water
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          ###################
+          #   Water Valve   #
+          ###################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.water_valve_contact
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+
+          #####################
+          #  Weather Station  #
+          #####################
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.weather_station_cold
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.weather_station_rain
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+              - type: vertical-stack
+                cards:
+                  - type: glance
+                    entities:
+                      - entity: input_select.weather_station_weather
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none

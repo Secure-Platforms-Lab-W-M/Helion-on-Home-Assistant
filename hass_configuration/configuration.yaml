@@ -1,0 +1,2167 @@
+############################################################################################
+
+#################
+# Configuration #
+#################
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+browser_mod:
+
+# Lovelace yaml mode
+lovelace:
+  mode: yaml
+
+  resources:
+    - url: /local/helion-card.js
+      type: module
+    - url: /local/wired-cards.js
+      type: module
+    - url: /browser_mod.js
+      type: module
+
+  dashboards:
+    lovelace-helion: # Needs to contain a hyphen (-)
+      mode: yaml
+      filename: helion.yaml
+      title: Helion
+      icon: mdi:tools
+      show_in_sidebar: true
+      require_admin: true
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+############################################################################################
+
+#################
+# Switch States #
+#################
+
+input_boolean:
+  add_event:
+    name: "Add Event(s)"
+  next_event:
+    name: "Next Event"
+  execute:
+    name: "Execute"
+  reset:
+    name: "Reset"
+  add_token:
+    name: "Add Token"
+  run_helion:
+    name: "Run Helion"
+  change_states:
+    name: "Change States"
+  text_file:
+    name: "Text File"
+  air_cooler:
+    name: "Air Cooler"
+  air_purifier:
+    name: "Air Purifier"
+  audio_player:
+    name: "Audio Player"
+  audio_sensor:
+    name: "Audio Sensor"
+  bread_maker:
+    name: "Bread Maker"
+  blood_pressure_monitor:
+    name: "Blood Pressure Monitor"
+  car_automation:
+    name: "Car Automation"
+  clothes_dryer:
+    name: "Clothes Dryer"
+  coffee_maker:
+    name: "Coffee Maker"
+  dishwasher:
+    name: "Dishwasher"
+  door_sensor:
+    name: "Door Sensor"
+  dust_detector:
+    name: "Dust Detector"
+  electric_blanket:
+    name: "Electric Blanket"
+  fan:
+    name: "Fan"
+  garden_sprinkler:
+    name: "Garden Sprinkler"
+  gas_sensor:
+    name: "Gas Sensor"
+  gas_stove:
+    name: "Gas Stove"
+  glass_break_detector:
+    name: "Glass Break Detector"
+  heater:
+    name: "Heater"
+  humidifier:
+    name: "Humidifier"
+  humidity_sensor:
+    name: "Humidity Sensor"
+  illuminance_sensor:
+    name: "Illuminance Sensor"
+  induction_cooktop:
+    name: "Induction Cooktop"
+  irrigation:
+    name: "Irrigation"
+  light_bulb:
+    name: "Light Bulb"
+  lighting_remote:
+    name: "Lighting Remote"
+  microwave_oven:
+    name: "Microwave Oven"
+  moisture_sensor:
+    name: "Moisture Sensor"
+  motion_sensor:
+    name: "Motion Sensor"
+  oil_warmer:
+    name: "Oil Warmer"
+  oven:
+    name: "Oven"
+  ph_sensor:
+    name: "PH Sensor"
+  presence_sensor:
+    name: "Presence Sensor"
+  projector:
+    name: "Projector"
+  pulse_monitor:
+    name: "Pulse Monitor"
+  refrigerator:
+    name: "Refrigerator"
+  robot_vacuum:
+    name: "Robot Vacuum"
+  security_camera:
+    name: "Security Camera"
+  security_system:
+    name: "Security System"
+  sleep_monitor:
+    name: "Sleep Monitor"
+  smart_assistant:
+    name: "Smart Assistant"
+  smart_mirror:
+    name: "Smart Mirror"
+  smart_tv:
+    name: "Smart TV"
+  speaker:
+    name: "Speaker"
+  sprinkler:
+    name: "Sprinkler"
+  switches:
+    name: "Switches"
+  temperature_sensor:
+    name: "Temperature Sensor"
+  washer:
+    name: "Washer"
+  water_leak_detector:
+    name: "Water Leak Detector"
+  water_heater:
+    name: "Water Heater"
+
+input_text:
+  token:
+    name: "Input Event(s)"
+
+input_number:
+  event_number:
+    name: "Event Number"
+    initial: 0
+    min: 0
+    max: 100
+    step: 1
+    mode: box
+
+############################################################################################
+
+###############################
+# Start of a million switches #
+###############################
+
+switch:
+  - platform: template
+    switches:
+      #######################
+      #   Air Conditioner   #
+      #######################
+
+      # Completed with input selects
+
+      ########################
+      #      Air Cooler      #
+      ########################
+      air_cooler:
+        friendly_name: "Air Cooler"
+        unique_id: 1
+        value_template: "{{ states('input_boolean.air_cooler') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.air_cooler
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.air_cooler
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.air_cooler
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.air_cooler
+
+      ########################
+      #     Air Purifier     #
+      ########################
+      air_purifier:
+        unique_id: 2
+        friendly_name: "Air Purifier"
+        value_template: "{{ states('input_boolean.air_purifier') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.air_purifier
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.air_purifier
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.air_purifier
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.air_purifier
+
+      ########################
+      #     Audio Player     #
+      ########################
+      audio_player:
+        unique_id: 3
+        friendly_name: "Audio Player"
+        value_template: "{{ states('input_boolean.audio_player') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.audio_player
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.audio_player
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.audio_player
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.audio_player
+
+      ########################
+      #     Audio Sensor     #
+      ########################
+      audio_sensor:
+        unique_id: 3
+        friendly_name: "Audio Sensor"
+        value_template: "{{ states('input_boolean.audio_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.audio_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.audio_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.audio_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.audio_sensor
+
+      #########################
+      #     Beacon Device     #
+      #########################
+
+      # Completed with input selects
+
+      ##########################
+      # Blood Pressure Monitor #
+      ##########################
+
+      blood_pressure_monitor:
+        unique_id: 4
+        friendly_name: "Blood Pressure Monitor"
+        value_template: "{{ states('input_boolean.blood_pressure_monitor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.blood_pressure_monitor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.blood_pressure_monitor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.blood_pressure_monitor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.blood_pressure_monitor
+
+      #####################
+      #    Bread Maker    #
+      #####################
+      bread_maker:
+        unique_id: 5
+        friendly_name: "Bread Maker"
+        value_template: "{{ states('input_boolean.bread_maker') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.bread_maker
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.bread_maker
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.bread_maker
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.bread_maker
+
+      ####################
+      #      Button      #
+      ####################
+
+      # Completed with input selects
+
+      ##########################
+      #     Car Automation     #
+      ##########################
+
+      # Completed with input selects
+
+      #######################
+      #    Clothes Dryer    #
+      #######################
+      clothes_dryer:
+        unique_id: 6
+        friendly_name: "Clothes Dryer"
+        value_template: "{{ states('input_boolean.clothes_dryer') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.clothes_dryer
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.clothes_dryer
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.clothes_dryer
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.clothes_dryer
+
+      #######################
+      #     CO Detector     #
+      #######################
+
+      # Completed with input selects
+
+      ########################
+      #    Car Automation    #
+      ########################
+      car_automation:
+        unique_id: 7
+        friendly_name: "Car Automation"
+        value_template: "{{ states('input_boolean.car_automation') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.car_automation
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.car_automation
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.car_automation
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.car_automation
+
+      ######################
+      #    Coffee Maker    #
+      ######################
+      coffee_maker:
+        unique_id: 8
+        friendly_name: "Coffee Maker"
+        value_template: "{{ states('input_boolean.coffee_maker') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.coffee_maker
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.coffee_maker
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.coffee_maker
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.coffee_maker
+
+      ######################
+      #   Contact Sensor   #
+      ######################
+
+      # Completed with input selects
+
+      ######################
+      #     Dishwasher     #
+      ######################
+      dishwasher:
+        unique_id: 9
+        friendly_name: "Dishwasher"
+        value_template: "{{ states('input_boolean.dishwasher') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.dishwasher
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.dishwasher
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.dishwasher
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.dishwasher
+
+      ###################
+      #    Door Lock    #
+      ###################
+
+      # Completed with input selects
+
+      #####################
+      #    Door Sensor    #
+      #####################
+      door_sensor:
+        unique_id: 10
+        friendly_name: "Door Sensor"
+        value_template: "{{ states('input_boolean.door_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.door_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.door_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.door_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.door_sensor
+
+      ###################
+      #    DoorBell    #
+      ###################
+
+      # Completed with input selects
+
+      #####################
+      #   Dust Detector   #
+      #####################
+      dust_detector:
+        unique_id: 11
+        friendly_name: "Dust Detector"
+        value_template: "{{ states('input_boolean.dust_detector') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.dust_detector
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.dust_detector
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.dust_detector
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.dust_detector
+      # Completed with input selects
+
+      ######################
+      #  Electric Blanket  #
+      ######################
+      electric_blanket:
+        unique_id: 12
+        friendly_name: "Electric Blanket"
+        value_template: "{{ states('input_boolean.electric_blanket') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.electric_blanket
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.electric_blanket
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.electric_blanket
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.electric_blanket
+
+      ######################
+      #    Energy Meter    #
+      ######################
+
+      # Completed with input selects
+
+      ######################
+      #    External API    #
+      ######################
+
+      # Completed with input selects
+
+      #############
+      #    Fan    #
+      #############
+      fan:
+        unique_id: 13
+        friendly_name: "Fan"
+        value_template: "{{ states('input_boolean.fan') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.fan
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.fan
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.fan
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.fan
+
+      ######################
+      # Garage Door Opener #
+      ######################
+
+      # Completed with input selects
+
+      ######################
+      #  Garden Sprinkler  #
+      ######################
+      garden_sprinkler:
+        unique_id: 14
+        friendly_name: "Garden Sprinkler"
+        value_template: "{{ states('input_boolean.garden_sprinkler') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.garden_sprinkler
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.garden_sprinkler
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.garden_sprinkler
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.garden_sprinkler
+
+      ####################
+      #    Gas Sensor    #
+      ####################
+      gas_sensor:
+        unique_id: 15
+        friendly_name: "Gas Sensor"
+        value_template: "{{ states('input_boolean.gas_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.gas_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.gas_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.gas_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.gas_sensor
+      # Completed with input selects
+
+      ###################
+      #    Gas Stove    #
+      ###################
+      gas_stove:
+        unique_id: 16
+        friendly_name: "Gas Stove"
+        value_template: "{{ states('input_boolean.gas_stove') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.gas_stove
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.gas_stove
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.gas_stove
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.gas_stove
+
+      ########################
+      # Glass Break Detector #
+      ########################
+      glass_break_detector:
+        unique_id: 17
+        friendly_name: "Gas Break Detector"
+        value_template: "{{ states('input_boolean.glass_break_detector') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.glass_break_detector
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.glass_break_detector
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.glass_break_detector
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.glass_break_detector
+      # Completed with input selects
+
+      ################
+      #    Heater    #
+      ################
+      heater:
+        unique_id: 18
+        friendly_name: "Heater"
+        value_template: "{{ states('input_boolean.heater') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.heater
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.heater
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.heater
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.heater
+
+      ####################
+      #    Humidifier    #
+      ####################
+      humidifier:
+        unique_id: 19
+        friendly_name: "Humidifier"
+        value_template: "{{ states('input_boolean.humidifier') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.humidifier
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.humidifier
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.humidifier
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.humidifier
+
+      ########################
+      #    Humidity Sensor   #
+      ########################
+      humidity_sensor:
+        unique_id: 20
+        friendly_name: "Humidity Sensor"
+        value_template: "{{ states('input_boolean.humidity_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.humidity_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.humidity_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.humidity_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.humidity_sensor
+
+      ########################
+      #  Illuminance Sensor  #
+      ########################
+      illuminance_sensor:
+        unique_id: 21
+        friendly_name: "Illuminance Sensor"
+        value_template: "{{ states('input_boolean.illuminance_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.illuminance_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.illuminance_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.illuminance_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.illuminance_sensor
+
+      #######################
+      #  Induction Cooktop  #
+      #######################
+      induction_cooktop:
+        unique_id: 22
+        friendly_name: "Induction Cooktop"
+        value_template: "{{ states('input_boolean.induction_cooktop') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.induction_cooktop
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.induction_cooktop
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.induction_cooktop
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.induction_cooktop
+
+      ####################
+      #    Irrigation    #
+      ####################
+      irrigation:
+        unique_id: 23
+        friendly_name: "Irrigation"
+        value_template: "{{ states('input_boolean.irrigation') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.irrigation
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.irrigation
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.irrigation
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.irrigation
+
+      ####################
+      #    Light Bulb    #
+      ####################
+      light_bulb:
+        unique_id: 24
+        friendly_name: "Light Bulb"
+        value_template: "{{ states('input_boolean.light_bulb') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.light_bulb
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.light_bulb
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.light_bulb
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.light_bulb
+
+      #########################
+      #    Lighting Remote    #
+      #########################
+      lighting_remote:
+        unique_id: 25
+        friendly_name: "Lighting Remote"
+        value_template: "{{ states('input_boolean.lighting_remote') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.lighting_remote
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.lighting_remote
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.lighting_remote
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.lighting_remote
+
+      ####################
+      #  Microwave Oven  #
+      ####################
+      microwave_oven:
+        unique_id: 26
+        friendly_name: "Microwave Oven"
+        value_template: "{{ states('input_boolean.microwave_oven') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.microwave_oven
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.microwave_oven
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.microwave_oven
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.microwave_oven
+
+      #####################
+      #  Moisture Sensor  #
+      #####################
+      moisture_sensor:
+        unique_id: 27
+        friendly_name: "Moisture Sensor"
+        value_template: "{{ states('input_boolean.moisture_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.moisture_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.moisture_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.moisture_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.moisture_sensor
+
+      #####################
+      #   Motion Sensor   #
+      #####################
+      motion_sensor:
+        unique_id: 28
+        friendly_name: "Motion Sensor"
+        value_template: "{{ states('input_boolean.motion_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.motion_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.motion_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.motion_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.motion_sensor
+
+      ################
+      #     Null     #
+      ################
+
+      # Completed with input selects
+
+      ####################
+      #    Oil Warmer    #
+      ####################
+      oil_warmer:
+        unique_id: 29
+        friendly_name: "Oil Warmer"
+        value_template: "{{ states('input_boolean.oil_warmer') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.oil_warmer
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.oil_warmer
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.oil_warmer
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.oil_warmer
+
+      ##############
+      #    Oven    #
+      ##############
+      oven:
+        unique_id: 30
+        friendly_name: "Oven"
+        value_template: "{{ states('input_boolean.oven') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.oven
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.oven
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.oven
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.oven
+
+      ###################
+      #    PH Sensor    #
+      ###################
+      ph_sensor:
+        unique_id: 31
+        friendly_name: "PH Sensor"
+        value_template: "{{ states('input_boolean.ph_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.ph_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.ph_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.ph_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.ph_sensor
+
+      #############
+      #   Phone   #
+      #############
+
+      # Completed with input selects
+
+      ###################
+      # Presence Sensor #
+      ###################
+      presence_sensor:
+        unique_id: 32
+        friendly_name: "Presence Sensor"
+        value_template: "{{ states('input_boolean.presence_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.presence_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.presence_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.presence_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.presence_sensor
+
+      ###################
+      #    Projector    #
+      ###################
+      projector:
+        unique_id: 33
+        friendly_name: "Projector"
+        value_template: "{{ states('input_boolean.projector') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.projector
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.projector
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.projector
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.projector
+
+      ###################
+      #  Pulse Monitor  #
+      ###################
+      pulse_monitor:
+        unique_id: 34
+        friendly_name: "Pulse Monitor"
+        value_template: "{{ states('input_boolean.pulse_monitor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.pulse_monitor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.pulse_monitor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.pulse_monitor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.pulse_monitor
+
+      ##################
+      #  Refrigerator  #
+      ##################
+      refrigerator:
+        unique_id: 35
+        friendly_name: "Refrigerator"
+        value_template: "{{ states('input_boolean.refrigerator') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.refrigerator
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.refrigerator
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.refrigerator
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.refrigerator
+
+      ##################
+      #  Robot Vacuum  #
+      ##################
+      robot_vacuum:
+        unique_id: 36
+        friendly_name: "Robot Vacuum"
+        value_template: "{{ states('input_boolean.robot_vacuum') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.robot_vacuum
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.robot_vacuum
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.robot_vacuum
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.robot_vacuum
+
+      ####################
+      #  Security Alarm  #
+      ####################
+
+      # Completed with input selects
+
+      #####################
+      #  Security Camera  #
+      #####################
+      security_camera:
+        unique_id: 37
+        friendly_name: "Security Camera"
+        value_template: "{{ states('input_boolean.security_camera') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.security_camera
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.security_camera
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.security_camera
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.security_camera
+
+      #####################
+      #  Security System  #
+      #####################
+
+      security_system:
+        unique_id: 38
+        friendly_name: "Security System"
+        value_template: "{{ states('input_boolean.security_system') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.security_system
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.security_system
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.security_system
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.security_system
+
+      ###################
+      #  Shades/Blinds  #
+      ###################
+
+      # Completed with input selects
+
+      ###################
+      #  Sleep Monitor  #
+      ###################
+      sleep_monitor:
+        unique_id: 39
+        friendly_name: "Sleep Monitor"
+        value_template: "{{ states('input_boolean.sleep_monitor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.sleep_monitor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.sleep_monitor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.sleep_monitor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.sleep_monitor
+
+      #####################
+      #  Smart Assistant  #
+      #####################
+
+      smart_assistant:
+        unique_id: 40
+        friendly_name: "Smart Assistant"
+        value_template: "{{ states('input_boolean.smart_assistant') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.smart_assistant
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.smart_assistant
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.smart_assistant
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.smart_assistant
+
+      #####################
+      #   Smart Battery   #
+      #####################
+
+      # Completed with input selects
+
+      ##################
+      #  Smart Mirror  #
+      ##################
+      smart_mirror:
+        unique_id: 41
+        friendly_name: "Smart Mirror"
+        value_template: "{{ states('input_boolean.smart_mirror') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.smart_mirror
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.smart_mirror
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.smart_mirror
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.smart_mirror
+
+      ##############
+      #  Smart TV  #
+      ##############
+      smart_tv:
+        unique_id: 42
+        friendly_name: "Smart TV"
+        value_template: "{{ states('input_boolean.smart_tv') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.smart_tv
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.smart_tv
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.smart_tv
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.smart_tv
+
+      ####################
+      #  Smoke Detector  #
+      ####################
+
+      # Completed with input selects
+
+      #################
+      #    Speaker    #
+      #################
+      speaker:
+        unique_id: 43
+        friendly_name: "Speaker"
+        value_template: "{{ states('input_boolean.speaker') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.speaker
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.speaker
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.speaker
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.speaker
+
+      ###################
+      #    Sprinkler    #
+      ###################
+      sprinkler:
+        unique_id: 44
+        friendly_name: "Sprinkler"
+        value_template: "{{ states('input_boolean.sprinkler') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.sprinkler
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.sprinkler
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.sprinkler
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.sprinkler
+
+      ###################
+      #     Switches    #
+      ###################
+      switches:
+        unique_id: 45
+        friendly_name: "Switches"
+        value_template: "{{ states('input_boolean.switches') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.switches
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.switches
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.switches
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.switches
+
+      ########################
+      #  Temperature Sensor  #
+      ########################
+
+      temperature_sensor:
+        unique_id: 46
+        friendly_name: "Temporature Sensor"
+        value_template: "{{ states('input_boolean.temperature_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.temperature_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.temperature_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.temperature_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.temperature_sensor
+
+      ##################
+      #   Thermostat   #
+      ##################
+
+      # Completed with input selects
+
+      ################
+      #    Washer    #
+      ################
+
+      washer:
+        unique_id: 47
+        friendly_name: "Washer"
+        value_template: "{{ states('input_boolean.washer') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.washer
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.washer
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.washer
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.washer
+
+      ##################
+      #  Water Heater  #
+      ##################
+      water_heater:
+        friendly_name: "Water Heater"
+        unique_id: 48
+        value_template: "{{ states('input_boolean.water_heater') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.water_heater
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.water_heater
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.water_heater
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.water_heater
+
+      #########################
+      #  Water Leak Detector  #
+      #########################
+
+      water_leak_detector:
+        friendly_name: "Water Leak Detector"
+        unique_id: 49
+        value_template: "{{ states('input_boolean.water_leak_detector') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.water_leak_detector
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.water_leak_detector
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.water_leak_detector
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.water_leak_detector
+
+  ###################
+  #   Water Valve   #
+  ###################
+
+  # Completed with input selects
+
+  #####################
+  #  Weather Station  #
+  #####################
+
+  # Completed with input selects
+
+############################################################################################
+
+#####################
+#   Input Selects   #
+#####################
+
+input_select:
+  model:
+    name: "Model"
+    options:
+      - interpolate
+      - backoff
+  order:
+    name: "Order"
+    options:
+      - 3 grams
+      - 4 grams
+  flavor:
+    name: "Flavor"
+    options:
+      - up
+      - down
+
+  #######################
+  #   Custom Card Method  #
+  #######################
+  methods:
+    name: "Custom Card Methods"
+    options:
+      - Backoff
+      - Interpolation
+
+  #######################
+  #   Custom Card Model  #
+  #######################
+  models:
+    name: "Custom Card Models"
+    options:
+      - "3_grams"
+      - "4_grams"
+
+  #######################
+  #   Custom Card Flavors  #
+  #######################
+  flavors:
+    name: "Custom Card Flavors"
+    options:
+      - up
+      - down
+      - strange
+
+  #######################
+  #   Air Conditioner   #
+  #######################
+  air_conditioner_thermostat:
+    name: "Air Conditioner,Thermostat"
+    options:
+      - "on"
+      - auto
+      - increased
+      - decreased
+      - "off"
+
+  ########################
+  #     Air Purifier     #
+  ########################
+  air_purifier_air_quality:
+    name: "Air Purifier,Air Quality"
+    options:
+      - greater
+      - lesser
+
+  ########################
+  #     Audio Player     #
+  ########################
+  audio_player_mute:
+    name: "Audio Player,Mute"
+    options:
+      - muted
+      - unmute
+  audio_player_volume:
+    name: "Audio Player,Volume"
+    options:
+      - increased
+      - decreased
+
+  ########################
+  #     Audio Sensor     #
+  ########################
+  audio_sensor_audio:
+    name: "Audio Sensor,Audio"
+    options:
+      - detected
+      - not_detected
+
+  #########################
+  #     Beacon Device     #
+  #########################
+  beacon_device_presence:
+    name: "Beacon Device,Presence"
+    options:
+      - not_present
+      - present
+
+  ##########################
+  # Blood Pressure Monitor #
+  ##########################
+  blood_pressure_monitor_pressure:
+    name: "Blood Pressure Monitor,Pressure"
+    options:
+      - greater
+      - lesser
+
+  ####################
+  #      Button      #
+  ####################
+  button_button:
+    name: "Button,Button"
+    options:
+      - pushed
+
+  ##########################
+  #     Car Automation     #
+  ##########################
+  car_automation_presence:
+    name: "Car Automation,Presence"
+    options:
+      - present
+      - not_present
+
+  #######################
+  #    Clothes Dryer    #
+  #######################
+  clothes_dryer_mode:
+    name: "Clothes Dryer,Mode"
+    options:
+      - ready
+      - running
+  clothes_dryer_lint:
+    name: "Clothes Dryer,Lint"
+    options:
+      - full
+      - not_full
+  clothes_dryer_completion:
+    name: "Clothes Dryer,Completion"
+    options:
+      - "true"
+      - "false"
+
+  #######################
+  #     CO Detector     #
+  #######################
+  co_detector_carbon_monoxide:
+    name: "CO Detector,Carbon Monoxide"
+    options:
+      - detected
+      - not_detected
+
+  ############################
+  #     CO Detector Alarm    #
+  ############################
+  co_detector_alarm:
+    name: "CO Detector,Alarm"
+    options:
+      - siren
+
+  ######################
+  #    Coffee Maker    #
+  ######################
+  coffee_maker_temperature:
+    name: "Coffee Maker,Temperature"
+    options:
+      - greater
+      - lesser
+  coffee_maker_water:
+    name: "Coffee Maker,Water"
+    options:
+      - dry
+      - wet
+      - detected
+
+  ######################
+  #   Contact Sensor   #
+  ######################
+  contact_sensor_contact:
+    name: "Contact Sensor,Contact"
+    options:
+      - closed
+      - opened
+
+  ######################
+  #     Dishwasher     #
+  ######################
+  dishwasher_mode:
+    name: "Dishwasher,Mode"
+    options:
+      - ready
+      - running
+  dishwasher_weight:
+    name: "Dishwasher,Weight"
+    options:
+      - greater
+
+  ###################
+  #    Door Lock    #
+  ###################
+  door_lock_tamper:
+    name: "Door Lock,Tamper"
+    options:
+      - detected
+      - undetected
+  door_lock_battery:
+    name: "Door Lock,Battery"
+    options:
+      - lesser
+  door_lock_lock:
+    name: "Door Lock,Lock"
+    options:
+      - auto_lock
+      - locked
+      - unlocked
+  door_lock_auto_lock:
+    name: "Door Lock,Auto Lock"
+    options:
+      - activated
+      - deactivated
+  door_lock_child_lock:
+    name: "Child Lock,Child Lock"
+    options:
+      - activivated
+      - deactivated
+
+  #####################
+  #    Door Sensor    #
+  #####################
+  door_sensor_contact:
+    name: "Door Sensor,Contact"
+    options:
+      - opened
+      - closed
+
+  ##################
+  #    DoorBell    #
+  ##################
+  doorbell_button:
+    name: "Doorbell,Button"
+    options:
+      - pushed
+  doorbell_chime:
+    name: "Doorbell,Chime"
+    options:
+      - "on"
+      - "off"
+
+  #####################
+  #   Dust Detector   #
+  #####################
+  dust_detector_dust:
+    name: "Dust Detector,Dust"
+    options:
+      - greater
+      - undetected
+
+  ######################
+  #    Energy Meter    #
+  ######################
+  energy_meter_energy:
+    name: "Energy Meter,Energy"
+    options:
+      - greater
+      - lesser
+  energy_meter_mode:
+    name: "Energy Meter,Mode"
+    options:
+      - save
+
+  ######################
+  #    External API    #
+  ######################
+  external_api_news:
+    name: "External API,News"
+    options:
+      - notify
+  external_api_order:
+    name: "External API,Order"
+    options:
+      - placed
+  external_api_traffic:
+    name: "External API,Traffic"
+    options:
+      - notify
+      - heavy
+
+  #############
+  #    Fan    #
+  #############
+  fan_speed:
+    name: "Fan,Speed"
+    options:
+      - greater
+      - lesser
+
+  ######################
+  # Garage Door Opener #
+  ######################
+  garage_door_opener_contact:
+    name: "Garage Door Opener,Contact"
+    options:
+      - opened
+      - closed
+  garage_door_opener_signal_strength:
+    name: "Garage Door Opener,Signal Strength"
+    options:
+      - lesser
+
+  ####################
+  #    Gas Sensor    #
+  ####################
+  gas_sensor_odor_level:
+    name: "Gas Sensor,Odor Level"
+    options:
+      - lesser
+      - greater
+
+  #########################
+  #    Gas Sensor Alarm   #
+  #########################
+  gas_sensor_alarm:
+    name: "Gas Sensor,Alarm"
+    options:
+      - siren
+
+  ########################
+  # Glass Break Detector #
+  ########################
+  glass_break_detector_shock:
+    name: "Glass Break Detector,Shock"
+    options:
+      - detected
+      - not_detected
+
+  ########################
+  #    Humidity Sensor   #
+  ########################
+  humidity_sensor_humidity:
+    name: "Humidity Sensor,Humidity"
+    options:
+      - greater
+      - lesser
+
+  ########################
+  #  Illuminance Sensor  #
+  ########################
+  illuminance_sensor_illuminance:
+    name: "Illuminance Sensor,Illuminance"
+    options:
+      - greater
+      - lesser
+
+  ####################
+  #    Light Bulb    #
+  ####################
+  light_bulb_color_value:
+    name: "Light Bulb,Color Value"
+    options:
+      - fixed_value
+  light_bulb_mode:
+    name: "Light Bulb,Mode"
+    options:
+      - shuffle
+      - flash
+
+  #####################
+  #  Moisture Sensor  #
+  #####################
+  moisture_sensor_water:
+    name: "Moisture Sensor,Water"
+    options:
+      - dry
+      - wet
+
+  #####################
+  #   Motion Sensor   #
+  #####################
+  motion_sensor_motion:
+    name: "Motion Sensor,Motion"
+    options:
+      - activated
+      - deactivated
+      - detected
+      - not_detected
+
+  ################
+  #     Null     #
+  ################
+  null_location_mode:
+    name: "Null,Location Mode"
+    options:
+      - away
+      - home
+      - night
+      - vacation
+      - not_vacation
+  null_time:
+    name: "Null,Time"
+    options:
+      - day
+      - afternoon
+      - evening
+      - morning
+      - night
+      - noon
+      - fixed_value
+  null_timer:
+    name: "Null,Timer"
+    options:
+      - completed
+      - started
+
+  ##############
+  #    Oven    #
+  ##############
+  oven_mode:
+    name: "Oven,Mode"
+    options:
+      - heat
+      - preheat
+
+  ###################
+  #    PH Sensor    #
+  ###################
+  ph_sensor_ph:
+    name: "PH Sensor,PH"
+    options:
+      - greater
+      - lesser
+
+  #############
+  #   Phone   #
+  #############
+  phone_notification:
+    name: "Phone,Notification"
+    options:
+      - notify
+      - "on"
+      - "off"
+
+  ###################
+  # Presence Sensor #
+  ###################
+  presence_sensor_presence:
+    name: "Presence Sensor,Presence"
+    options:
+      - not_present
+      - present
+
+  ###################
+  #  Pulse Monitor  #
+  ###################
+  pulse_monitor_pulse:
+    name: "Pulse Monitor,Pulse"
+    options:
+      - greater
+      - lesser
+
+  ##################
+  #  Refrigerator  #
+  ##################
+  refrigerator_contact:
+    name: "Refrigerator,Contact"
+    options:
+      - closed
+      - opened
+  refrigerator_mode:
+    name: "Refrigerator,Mode"
+    options:
+      - freeze_boost
+  refrigerator_filter_status:
+    name: "Refrigerator Filter,Status"
+    options:
+      - replace
+  refrigerator_temperature:
+    name: "Refrigerator,Temperature"
+    options:
+      - greater
+      - lesser
+
+  #############################
+  #  Refrigerator Thermostat  #
+  #############################
+  refrigerator_thermostat:
+    name: "Refrigerator,Thermostat"
+    options:
+      - decreased
+
+  ####################
+  #  Security Alarm  #
+  ####################
+  security_alarm_alarm:
+    name: "Security Alarm,Alarm"
+    options:
+      - siren_strobe
+      - siren
+      - strobe
+      - "off"
+      - "on"
+  security_alarm_mode:
+    name: "Security Alarm,Mode"
+    options:
+      - activated
+      - deactivated
+
+  #####################
+  #  Security Camera  #
+  #####################
+  security_camera_image:
+    name: "Security Camera,Image"
+    options:
+      - take
+  security_camera_motion:
+    name: "Security Camera,Motion"
+    options:
+      - undetected
+      - detected
+      - activated
+      - deactivated
+  security_camera_sound:
+    name: "Security Camera,Sound"
+    options:
+      - undetected
+      - detected
+  security_camera_video:
+    name: "Security Camera,Video"
+    options:
+      - record
+      - stream
+
+  #####################
+  #  Security System  #
+  #####################
+  security_system_mode:
+    name: "Security System,Mode"
+    options:
+      - armed
+      - partially_armed
+      - disarmed
+
+  ###################
+  #  Shades/Blinds  #
+  ###################
+  shades_blinds_contact:
+    name: "Shades/Blinds,Contact"
+    options:
+      - closed
+      - opened
+  shades_blinds_three_axis:
+    name: "Shades/Blinds,Three Axis"
+    options:
+      - fixed_value
+
+  ###################
+  #  Sleep Monitor  #
+  ###################
+  sleep_monitor_sleeping:
+    name: "Sleep Monitor,Sleeping"
+    options:
+      - detected
+      - not_detected
+
+  #####################
+  #  Smart Assistant  #
+  #####################
+  smart_assistant_notification:
+    name: "Smart Assistant,Notification"
+    options:
+      - notify
+  smart_assistant_voice:
+    name: "Smart Assistant,Voice"
+    options:
+      - command
+
+  #####################
+  #   Smart Battery   #
+  #####################
+  smart_battery_battery:
+    name: "Smart Battery,Battery"
+    options:
+      - low
+      - not_low
+
+  ##############
+  #  Smart TV  #
+  ##############
+  smart_tv_channel:
+    name: "Smart TV,Channel"
+    options:
+      - fixed_value
+
+  ####################
+  #  Smoke Detector  #
+  ####################
+  smoke_detector_battery:
+    name: "Smoke Detector,Battery"
+    options:
+      - lesser
+  smoke_detector_smoke:
+    name: "Smoke Detector,Smoke"
+    options:
+      - detected
+      - greater
+  smoke_detector_tamper:
+    name: "Smoke Detector,Tamper"
+    options:
+      - detected
+
+  #############
+  #  Speaker  #
+  #############
+  speaker_volume:
+    name: "Speaker,Volume"
+    options:
+      - fixed_value
+  speaker_mute:
+    name: "Speaker,Mute"
+    options:
+      - mute
+      - unmuted
+
+  ########################
+  #  Temperature Sensor  #
+  ########################
+  temperature_sensor_temperature:
+    name: "Temperature Sensor,Temperature"
+    options:
+      - greater
+      - equal
+      - lesser
+
+  ##################
+  #   Thermostat   #
+  ##################
+  thermostat_thermostat:
+    name: "Thermostat,Thermostat"
+    options:
+      - auto
+      - decreased
+      - heat_boost
+      - hold
+      - increased
+      - manual
+      - "off"
+      - "on"
+
+  thermostat_cool_point:
+    name: "Thermostat,Cool Point"
+    options:
+      - fixed_value
+
+  ################
+  #    Washer    #
+  ################
+  washer_completion:
+    name: "Washer,Completion"
+    options:
+      - "true"
+      - "false"
+
+  #########################
+  #  Water Leak Detector  #
+  #########################
+  water_leak_detector_water:
+    name: "Water Leak Detector,Water"
+    options:
+      - wet
+      - dry
+
+  ###################
+  #   Water Valve   #
+  ###################
+  water_valve_contact:
+    name: "Water Valve,Contact"
+    options:
+      - opened
+      - closed
+
+  #####################
+  #  Weather Station  #
+  #####################
+  weather_station_cold:
+    name: "Weather Station,Cold"
+    options:
+      - "true"
+  weather_station_rain:
+    name: "Weather Station,Rain"
+    options:
+      - "true"
+      - "false"
+  weather_station_weather:
+    name: "Weather Station,Weather"
+    options:
+      - notify
+############################################################################################

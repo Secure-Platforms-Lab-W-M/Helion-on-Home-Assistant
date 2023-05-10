@@ -1,0 +1,43 @@
+title: Helion
+views:
+- cards:
+  - cards:
+    - cards:
+      - entities:
+        - entity: input_select.order
+        type: entities
+      - entities:
+        - entity: input_select.flavor
+        type: entities
+      - entities:
+        - entity: input_text.token
+        type: entities
+      - entity: input_boolean.add_event
+        show_icon: false
+        type: button
+      - entity: input_boolean.run_helion
+        show_icon: false
+        type: button
+      - entity: input_boolean.next_event
+        show_icon: false
+        type: button
+      - entity: input_boolean.reset
+        show_icon: false
+        type: button
+      title: Settings
+      type: vertical-stack
+    - cards: []
+      title: Input
+      type: vertical-stack
+    - cards: []
+      title: Output
+      type: vertical-stack
+    columns: 3
+    gridcols: 30% 30% 30%
+    gridrows: auto auto auto
+    square: false
+    type: grid
+  icon: mdi:home-variant
+  panel: true
+  path: helion
+  title: Helion

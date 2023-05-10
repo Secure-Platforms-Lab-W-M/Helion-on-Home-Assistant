@@ -1,0 +1,1 @@
+<null,time,night> <Door_Lock,lock,unlocked> <Motion_Sensor,motion,detected> <Water_Heater,switch,on>

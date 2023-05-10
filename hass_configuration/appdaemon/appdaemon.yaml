@@ -1,0 +1,11 @@
+# replace the token below with your own long lived access token!
+appdaemon:
+  time_zone: EST
+  latitude: 51.725
+  longitude: 14.3434
+  elevation: 0
+  plugins:
+    HASS:
+      type: hass
+      ha_url: http://localhost:8123
+      token: REPLACE_WITH_YOUR_TOKEN_HERE
