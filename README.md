@@ -1,4 +1,4 @@
-# Implementing Helion on Home Assistant
+# Implementing Helion on Home Assistant (HelionHA)
 
 ### Table of Contents
 - [Helion Setup](#helion)
