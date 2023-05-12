@@ -13,6 +13,7 @@ Helion is a data-driven framework that models the regularities of user-driven ho
 ( Our recommendation is to create and store these in /helion/libs )
 
 - [MITLM 0.4.1](https://github.com/mitlm/mitlm/releases/tag/v0.4.1) - MIT Language Modeling Toolkit
+  -  Please install [GForTran](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS) if you get an error while building MITLM. On Mac, you can simply run `brew install gfortran`
 - [Python Daemon](https://pypi.python.org/pypi/python-daemon/) - Library to implement a well-behaved Unix daemon process.
 - [Brain Files](https://github.com/martingwhite/kramer) - The language model server script which reads/writes JSON documents to named pipes.
 
