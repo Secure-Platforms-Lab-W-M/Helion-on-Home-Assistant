@@ -118,6 +118,10 @@ Alternatively, you can drag and drop all of the files and folders manually to th
 Working with Home Assistant requires modifications to the `~/.homeassistant` directory.
 Note that the directory is hidden, so in your base directory to view it you would need to run `ls -a`.
 
+### Running Helion on Home Assistant 
+
+You can test the program by providing the following input events: `<null,time,night> <motion_sensor,motion,detected> <Door_Lock,lock,locked> <null,time,night>`. Please refer to helion.vocab file (under helion/data/generated_data/training_model/) to identify the tokens that are currently supported.
+
 ### Home Assistant Term Definitions
 
 Some important terms in Home Assistant and their definitions:
