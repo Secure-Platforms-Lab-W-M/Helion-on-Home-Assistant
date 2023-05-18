@@ -10,32 +10,46 @@
 
 All the instruction for setting up Helion are inside the `helion` Directory. Our setup is based on `python3.8`, installed using [MiniConda](https://docs.conda.io/en/latest/miniconda.html).
 
+For example, we have set up and activated `python3.8` using the following commands:
+
+```sh
+conda create --name python3.8 python=3.8
+conda activate python3.8
+```
+
 ## Home Assistant
 
 The documentation of architecture can be found [here](https://developers.home-assistant.io/docs/architecture/core).
 
 
-### Manually Installing Home Assistant
+### Installing Home Assistant
 
-Without the virtual environment detailed above, the dependencies need to be manually installed. The instructions for installation on each platform can be found [here](https://www.home-assistant.io/installation/). 
+The instructions for installing Home Assistant can be found [here](https://developers.home-assistant.io/docs/development_environment). As said, the `ha-core/script/setup` can be used to setup Home Assistant.
 
-**Note: after choosing your platform, scroll to the Install Home Assistant Core section of the page.**
-
-As mentioned in the architecture documentation, Home Assistant can only run natively on Linux and MacOS systems.
-
-To run Home Assistant on Windows, you will need to use the Windows Subsystems for Linx (WSL).
+To run Home Assistant on Windows, you will need to use the Windows Subsystems for Linux (WSL).
 The instructions can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
 Alternatively, you can set up a Linux Virtual Machine.
 The instructions for that can be found [here](https://www.home-assistant.io/installation/windows)
 
-If the instructions provided in the link do not work, the following instructions may work (tested on MAC OS Big Sur/M1):
+## Additional Suggestions
 
-1. In the `ha-core` directory, run `pip install -r requirements.final.txt`. This will take several minutes. **Make sure the `pip` version is between 8.0.3 and 20.3**
+If the instructions provided in the link do not work, the following suggestions may help resolve the dependencies (tested on MAC OS Big Sur/M1):
 
-2. The `pyOpenSSL` dependency may fail to install due to internal dependencies, such as rust. In that case, install [rust](https://www.rust-lang.org/tools/install) and run the following to update $PATH: `source "$HOME/.cargo/env"`
+1. In the `ha-core` directory, run `pip install homeassistant && pip install -r requirements.final.txt`. This will take several minutes. **Please make sure the `pip` version is between 8.0.3 and 20.3**
 
-3. Run `python3 homeassistant/__main__.py` while in the `ha-core/homeassistant` directory. It cannot be run from other directories. When successful, it should be accessible from `http://localhost:8213`.
+2. The `pyOpenSSL` dependency may fail to install due to internal dependencies, such as rust. In that case, install [rust](https://www.rust-lang.org/tools/install) and run the following to update `$PATH`:
+    ```
+    source "$HOME/.cargo/env"
+    ```
+
+3. Run `python3 homeassistant/__main__.py` while in the `ha-core` directory, e.g.,
+
+    ```sh
+    (python3.8) ~/git/Helion-on-Home-Assistant/ha-core/python3 homeassistant/__main__.py
+    ```
+
+    It should not be runnable from other directories. When successful, it should be accessible from `http://localhost:8213`.
 
 4. Setup login credentials as needed.
 
@@ -57,7 +71,7 @@ Note that the directory is hidden, so in your base directory to view it you woul
 
 ### Setting up AppDaemon
 
-AppDaemon is an execution environment that we use to automate and connect the Home Assistant and helion processes. 
+AppDaemon is an execution environment that we use to automate and connect the Home Assistant and helion processes.
 
 In order to properly run our application please install Appdaemon by using the following command in your terminal:
 
@@ -109,7 +123,7 @@ Your configuration files and login information for Home Assistant is stored in t
 
 **Doing this will also delete all Home Assistant data, and the Helion configuration.yaml, ui-lovelace.yaml, and helion.yaml will need to be re-added. Please check the Modifying Home Assistant Dashboard**
 
-### Running Helion on Home Assistant 
+### Running Helion on Home Assistant
 
 You can test the program by providing the following input events: `<null,time,night> <motion_sensor,motion,detected> <Door_Lock,lock,locked> <null,time,night>`. Please refer to helion.vocab file (under helion/data/generated_data/training_model/) to identify the tokens that are currently supported.
 
@@ -213,30 +227,30 @@ This should give future development teams an idea of how any one card will corre
 
 **Doing this will also delete all Home Assistant data, and the Helion configuration.yaml and ui-lovelace will need to be readded. Please check Modifying Home Assistant Dashboard again.**
 
-### Setting Up Your Own Device to Home Assistant and Helion 
+### Setting Up Your Own Device to Home Assistant and Helion
 
-The goal of Helion is to ultimately be integrated with real devices. This is the process to set up a real device to your Helion and Home Assistant. 
+The goal of Helion is to ultimately be integrated with real devices. This is the process to set up a real device to your Helion and Home Assistant.
 
 1. The first step is to hook your device to your wifi. There might be different ways to do this, dependent on your device. This is an example of how to do this using the [iHome Smart Plug](https://ethitter.com/2020/01/connect-ihome-smartplug-home-assistant-homekit/).
 
 2. Once your device is hooked up to your wifi, you will want to add the respective integration to your Home Assistant. ([This](https://www.home-assistant.io/integrations/homekit/) is the Home Assistant integration documentation that is specifc to the iHome Smart Plug.)
 
-    To add an integration, first run Home Assistant. Then go into your Home Assistant sidebar, and navigate to: 
+    To add an integration, first run Home Assistant. Then go into your Home Assistant sidebar, and navigate to:
 
-    **Configuration > Integrations > Add Integration.** 
+    **Configuration > Integrations > Add Integration.**
 
-    From here, you can search your specific integration that you're trying to add, and add your integration. 
+    From here, you can search your specific integration that you're trying to add, and add your integration.
 
-3. Now that the integration is added, and that your device is hooked up to your wifi, the device should be discoverable by Home Assistant. You should recieve a notification from your new Home Assistant Integration that a new device was discovered. 
+3. Now that the integration is added, and that your device is hooked up to your wifi, the device should be discoverable by Home Assistant. You should recieve a notification from your new Home Assistant Integration that a new device was discovered.
 
-    To be sure of this, you can also navigate to: **Configuration > Entities** from the sidebar, and you should see your new device in the list. 
+    To be sure of this, you can also navigate to: **Configuration > Entities** from the sidebar, and you should see your new device in the list.
 
 4. Next, to be able to see this device visible on your dashboard as a card, you will have to alter the entity ID.
 
-    First, comment out the entity in your coniguration.yaml file that you would like to use for your token. For the iHome Smart Plug example, Light Bulb was chosen.  Replace the entity ID with the entity in the configuration.yaml file you commented out.  In this case the entity ID was replaced with switch.light_bulb. 
+    First, comment out the entity in your coniguration.yaml file that you would like to use for your token. For the iHome Smart Plug example, Light Bulb was chosen.  Replace the entity ID with the entity in the configuration.yaml file you commented out.  In this case the entity ID was replaced with switch.light_bulb.
 
 <img width="635" alt="Screen Shot 2021-12-21 at 12 22 31 AM" src="https://user-images.githubusercontent.com/71198847/146875809-018b5a19-e02e-463d-b788-fc72689a85fe.png">
 
 5. Once that is replaced, you can go back to the configuration.yaml file and uncomment out the entity you used. If you do not do this, then when you try to change the entity ID you will get an error stating that ID already exists for some entity.
 
-6. After this, restart Home Assistant, and you should be able to see a new switch on the dashboard that represents your real device. 
+6. After this, restart Home Assistant, and you should be able to see a new switch on the dashboard that represents your real device.
