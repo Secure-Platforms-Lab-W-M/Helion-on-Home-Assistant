@@ -805,7 +805,7 @@ holidays==0.11.2
 home-assistant-frontend==20210922.0
 
 # homeassistant.components.zwave
-homeassistant-pyozw==0.1.10
+# homeassistant-pyozw==0.1.10
 
 # homeassistant.components.home_connect
 homeconnect==0.6.3
@@ -1003,7 +1003,7 @@ millheater==0.5.2
 minio==4.0.9
 
 # homeassistant.components.mitemp_bt
-mitemp_bt==0.0.3
+#mitemp_bt==0.0.3
 
 # homeassistant.components.motion_blinds
 motionblinds==0.5.5
@@ -1905,7 +1905,7 @@ python-mystrom==1.1.2
 python-nest==4.1.0
 
 # homeassistant.components.ozw
-python-openzwave-mqtt[mqtt-client]==1.4.0
+# python-openzwave-mqtt[mqtt-client]==1.4.0
 
 # homeassistant.components.picnic
 python-picnic-api==1.1.0
