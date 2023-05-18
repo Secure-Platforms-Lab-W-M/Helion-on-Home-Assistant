@@ -107,7 +107,7 @@ Appdaemon should connect to Home Assistant without any problems, allowing you to
 
 Your configuration files and login information for Home Assistant is stored in the `~/.homeassistant/` directory. If you are having issues using Home Assistant or if you need to reset your login credentials, run the command `rm -rf ~/.homeassistant` to remove the directory. Alternatively, you can locate the directory and manually delete it. Once you remove the directory, run the command to start Home Assistant, and access the home page, you should be prompted to create new credentials.
 
-**Doing this will also delete all Home Assistant data, and the Helion configuration.yaml, ui-lovelace.yaml, and helion.yaml will need to be re-added. Please check the **
+**Doing this will also delete all Home Assistant data, and the Helion configuration.yaml, ui-lovelace.yaml, and helion.yaml will need to be re-added. Please check the Modifying Home Assistant Dashboard**
 
 ### Running Helion on Home Assistant 
 

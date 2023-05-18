@@ -32,7 +32,7 @@ Execute the Following commands or add them to your .bash_profile (or relevant pr
 ```sh
 #for conda
 export PYTHONPATH=$PYTHONPATH:/Users/<user>/miniconda3/
-# for AppDaemon/Python-Daemon
+# for Python-Daemon
 export PYTHONPATH=$PYTHONPATH:/Users/<user>/miniconda3/envs/python3.8/lib/python3.8/site-packages/daemon/
 # for mitlm
 export PATH=$PATH:/Users/<user>/Helion-on-Home-Assistant/helion/libs/mitlm-0.4.2/
