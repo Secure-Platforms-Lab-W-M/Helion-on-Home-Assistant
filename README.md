@@ -8,61 +8,69 @@
 
 ## Helion
 
-All the instruction for setting up Helion are inside the `helion` Directory.
+All the instruction for setting up Helion are inside the `helion` Directory. Our setup is based on `python3.8`, installed using [MiniConda](https://docs.conda.io/en/latest/miniconda.html).
 
 ## Home Assistant
 
 The documentation of architecture can be found [here](https://developers.home-assistant.io/docs/architecture/core).
 
-### Using [Pycharm IDE](https://www.jetbrains.com/pycharm/):
-
-I had the best experience using Pycharm to setup Home Assistant Core.
-
-1. Install Pycharm.
-
-2. Clone this repository through git. (Using a token for authentication seems to be the best method of cloning)
-
-3. Load the ha-core project in Pycharm. It creates virtual environment with required dependencies.
-
-4. Run ha-core/homeassistant/\_\_main\_\_.py   (NOTE: for Windows users, run `__main__.py` in the PycharmProjects terminal. Please ensure the terminal is a predefined Ubuntu terminal)
-
-5. Through a browser of your choice, go to http://localhost:8123
-
-6. Setup login credentials. All the setup information are stored inside ~/.homeassistant/ directory
 
 ### Manually Installing Home Assistant
 
-Without the virtual environment detailed above, the dependencies need to be manually installed. The instructions for installation on each platform can be found [here](https://www.home-assistant.io/installation/). Note: after choosing your platform, scroll to the Install Home Assistant Core section of the page.
+Without the virtual environment detailed above, the dependencies need to be manually installed. The instructions for installation on each platform can be found [here](https://www.home-assistant.io/installation/). 
 
-As mentioned in the architecture documentation, Home Assistant can only run natively on Linux and Mac OS systems.
+**Note: after choosing your platform, scroll to the Install Home Assistant Core section of the page.**
+
+As mentioned in the architecture documentation, Home Assistant can only run natively on Linux and MacOS systems.
+
 To run Home Assistant on Windows, you will need to use the Windows Subsystems for Linx (WSL).
 The instructions can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
 Alternatively, you can set up a Linux Virtual Machine.
 The instructions for that can be found [here](https://www.home-assistant.io/installation/windows)
 
-If the instructions provided in the link do not work, the following instructions may work (tested on Windows WSL):
+If the instructions provided in the link do not work, the following instructions may work (tested on MAC OS Big Sur/M1):
 
-1. In the ha-core directory, run `pip install -r requirements.txt -r requirements_all.txt`. This will take several minutes. **Make sure the `pip` version is between 8.0.3 and 20.3**
+1. In the `ha-core` directory, run `pip install -r requirements.txt -r requirements_all.txt`. This will take several minutes. **Make sure the `pip` version is between 8.0.3 and 20.3**
 
-2. The `homeassistant-pyozw` dependency may fail to install. To install it, first install `libudev-dev` to your system. Next, you should be able to run `pip install homeassistant-pyozw` to complete the installation. [More information here](https://github.com/home-assistant/core/issues/18659).
+2. The `homeassistant-pyozw` dependency may fail to install. To install, 
 
-3. Run `python3 homeassistant/__main__.py` while in the `hacore/homeassistant` directory. It cannot be run from other directories.
+3. Run `python3 homeassistant/__main__.py` while in the `ha-core/homeassistant` directory. It cannot be run from other directories. When successful, it should be accessible from `http://localhost:8213`.
 
-4. Setup login credentials as above.
+4. Setup login credentials as needed.
 
 
-### Setting up Appdaemon
+## Modifying Home Assistant Dashboard
 
-Appdaemon is an execution environment that we use to automate and connect the Home Assistant and helion processes. In order to properly run our application please install Appdaemon by using the following command in your terminal:
+Make sure you have set up your login credentials in Home Assistant before proceeding to this step!
+
+After Home Assistant has been set up, you need to copy the contents of the `hass_configuration` directory to the `/.homeassistant` directory.
+To do that, navigate to the `hass_configuration` directory and run the following command below:
+```
+cp -r . ~/.homeassistant
+```
+
+Alternatively, you can drag and drop the files and folders manually to the `/.homeassistant` directory in your file explorer.
+
+Working with Home Assistant requires modifications to the `~/.homeassistant` directory.
+
+Note that the directory is hidden, so in your base directory to view it you would need to run `ls -a`.
+
+### Setting up AppDaemon
+
+AppDaemon is an execution environment that we use to automate and connect the Home Assistant and helion processes. 
+
+In order to properly run our application please install Appdaemon by using the following command in your terminal:
 
 ```
-sudo pip3 install appdaemon
+conda create --name appdaemon-env python=3.8
+conda activate appdaemon-env
+pip install appdaemon
 ```
 
 **Note: Do not run this command in the same virtual environment that you run Home Assistant!**
 
-Appdaemon will access your Home Assistant account and server through a long-term access token. To find this token:
+AppDaemon will access your Home Assistant account and server through a long-term access token. Here are the steps:
 
 1. Run Home Assistant, making sure to login with your credentials if necessary
 
@@ -74,49 +82,33 @@ Appdaemon will access your Home Assistant account and server through a long-term
 
 5. Copy the generated access token (Keep this token somewhere safe as you will not be able to see it again on Home Assistant)
 
-Once you have created an access token, you will need to change contents of the file `appdaemon.yaml` located in the `~/.homeassistant/appdaemon/` folder you located in the previous `Modifying Home Assistant Dashboard` section.
+Once you have created an access token, you will need to change contents of the file `appdaemon.yaml` located in the `~/.homeassistant/appdaemon/` folder you created in the previous `Modifying Home Assistant Dashboard` section.
 
 Open `appdaemon.yaml` in a text editor of your choice.
 
-You will notice a token on line 11. This token must be replaced with the one you just created.
-
+You will notice a `token` on line 11. This token must be replaced with the one you just created.
 Upon running, Appdaemon is now able to access your Home Assistant by being authenticated by the access token.
-Now that Appdaemon can connect to Home Assistant, we can focus on the script that connects helion automations to Home Assistant.
+Now that Appdaemon can connect to Home Assistant, we can focus on the script that connects Helion Automations to Home Assistant.
 
-The `helion.py` application located in appdaemon/apps/ requires the location of the helion scripts to run. Please locate your helion/scripts folder.
+The `helion.py` application located in `appdaemon/apps/` requires the location of the helion scripts to run. Please locate your `helion/scripts` folder.
+
 If you are using PycharmProjects, the path may look like the following:
 
-- WSL: `mnt/c/Users/<user>/PycharmProjects/CSci435-Fall21-Helion/helion/scripts`
-- MacOS: `/Users/<user>/PycharmProjects/CSci435-Fall21-Helion/helion/scripts`
+```sh
+/Users/<user>/Helion-on-Home-Assistant/helion/scripts
+```
+Now open `apps.yaml` located in `~/.homeassistant/appdaemon/apps/`, and put the location path of the `helion/scripts` folder in line 5 for `param1`.
 
-Now open `apps.yaml` located in `~/.homeassistant/appdaemon/apps/`. Put the location path of the helion/scripts folder in line 5 for "param1"
-
-Appdaemon will update itself every time you save a related file so you do not have to terminate Home Assistant and rerun it.
+Appdaemon will update itself every time you save a related file. Hence, you do not have to terminate Home Assistant and rerun it.
 If you did stop Home Assistant, rerun the application.
 
 Appdaemon should connect to Home Assistant without any problems, allowing you to utilize the buttons and services located on the UI dashboard.
 
-
 ### Resetting Home Assistant Configurations/Login Credentials
 
-Your configuration files and login information for Home Assistant is stored in the ~/.homeassistant/ directory. If you are having issues using Home Assistant or if you need to reset your login credentials, run the command `rm -rf ~/.homeassistant` to remove the directory. Alternatively, you can locate the directory and manually delete it. Once you remove the directory, run the command to start Home Assistant, and access the home page, you should be prompted to create new credentials.
+Your configuration files and login information for Home Assistant is stored in the `~/.homeassistant/` directory. If you are having issues using Home Assistant or if you need to reset your login credentials, run the command `rm -rf ~/.homeassistant` to remove the directory. Alternatively, you can locate the directory and manually delete it. Once you remove the directory, run the command to start Home Assistant, and access the home page, you should be prompted to create new credentials.
 
-**Doing this will also delete all Home Assistant data, and the Helion configuration.yaml, ui-lovelace.yaml, and helion.yaml will need to be readded**
-
-## Modifying Home Assistant Dashboard
-
-Make sure you have setup your login credentials in Home Assistant before proceeding to this step!
-
-After Home Assistant has been set up, you need to copy the contents of the `hass_configuration` directory to the `/.homeassistant` directory.
-To do that, navigate to the `hass_configuration` directory and run the following command below:
-```
-cp -r . ~/.homeassistant
-```
-
-Alternatively, you can drag and drop all of the files and folders manually to the `/.homeassistant` directory in your file explorer.
-
-Working with Home Assistant requires modifications to the `~/.homeassistant` directory.
-Note that the directory is hidden, so in your base directory to view it you would need to run `ls -a`.
+**Doing this will also delete all Home Assistant data, and the Helion configuration.yaml, ui-lovelace.yaml, and helion.yaml will need to be re-added. Please check the **
 
 ### Running Helion on Home Assistant 
 
@@ -219,7 +211,8 @@ When the user inputs the token with proper formatting on the dashbaord, it sends
 In the base directory, we have also included the `ui-compiled_cards.yaml` file.
 This file contains all of the cards that correspond to all of the entities.
 This should give future development teams an idea of how any one card will correspond to an entity.
-**Doing this will also delete all Home Assistant data, and the Helion configuration.yaml and ui-lovelace will need to be readded**
+
+**Doing this will also delete all Home Assistant data, and the Helion configuration.yaml and ui-lovelace will need to be readded. Please check Modifying Home Assistant Dashboard again.**
 
 ### Setting Up Your Own Device to Home Assistant and Helion 
 
