@@ -49,7 +49,7 @@ If the instructions provided in the link do not work, the following suggestions 
     (python3.8) ~/git/Helion-on-Home-Assistant/ha-core/python3 homeassistant/__main__.py
     ```
 
-    It should not be runnable from other directories. When successful, it should be accessible from `http://localhost:8213`.
+    It should not be runnable from other directories. When successful, it should be accessible from `http://localhost:8123`.
 
 4. Setup login credentials as needed.
 
