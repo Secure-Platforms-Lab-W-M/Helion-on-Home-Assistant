@@ -1,5 +1,3 @@
-#!/Users/sunilmanandhar/opt/anaconda3/envs/python2/bin/python
-
 import operator # Wouldn't need this module with python3...
 
 # ...nor this function because itertools has its own accumulate

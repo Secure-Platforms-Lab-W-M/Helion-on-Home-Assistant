@@ -1,6 +1,10 @@
 kramer
 ======
 
+**Original repo:** https://github.com/martingwhite/kramer
+
+## Original REPO README
+
 ## Requirements
 0. Linux (with write access to `/tmp`)
 1. Python 2.7.6
