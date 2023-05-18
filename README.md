@@ -31,14 +31,13 @@ The instructions for that can be found [here](https://www.home-assistant.io/inst
 
 If the instructions provided in the link do not work, the following instructions may work (tested on MAC OS Big Sur/M1):
 
-1. In the `ha-core` directory, run `pip install -r requirements.txt -r requirements_all.txt`. This will take several minutes. **Make sure the `pip` version is between 8.0.3 and 20.3**
+1. In the `ha-core` directory, run `pip install -r requirements.final.txt`. This will take several minutes. **Make sure the `pip` version is between 8.0.3 and 20.3**
 
-2. The `homeassistant-pyozw` dependency may fail to install. To install, 
+2. The `pyOpenSSL` dependency may fail to install due to internal dependencies, such as rust. In that case, install [rust](https://www.rust-lang.org/tools/install) and run the following to update $PATH: `source "$HOME/.cargo/env"`
 
 3. Run `python3 homeassistant/__main__.py` while in the `ha-core/homeassistant` directory. It cannot be run from other directories. When successful, it should be accessible from `http://localhost:8213`.
 
 4. Setup login credentials as needed.
-
 
 ## Modifying Home Assistant Dashboard
 
