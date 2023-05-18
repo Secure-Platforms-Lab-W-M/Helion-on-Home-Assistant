@@ -44,7 +44,8 @@ def construct_model(flavor,history):
 def run_server(t,n,v):
     cmd1 = 'braind ' + t + ' '  + v + ' --order ' + str(n)  
     print("Command: ",cmd1)
-    subprocess.check_output(cmd1,  shell = True)
+    import shlex
+    subprocess.check_output(shlex.split(cmd1))
 
 def repeated_tokens(tokens_list):
     prev_pred = ''
@@ -59,10 +60,10 @@ def repeated_tokens(tokens_list):
     return False
 def make_request():
     
-    cmd = 'cat request > /tmp/fifo0'
+    cmd = 'cat request > ./fifo0'
     subprocess.check_output(cmd,  shell = True)
     
-    cmd1 = 'cat /tmp/fifo1' 
+    cmd1 = 'cat ./fifo1' 
     binary_object = subprocess.check_output(cmd1,  shell = True)
 
     output_json = {}
@@ -81,12 +82,16 @@ def make_request():
 
 def kill_server():
     #Get process ID if braind is running
+    import shlex
+    print("Killing Server")
     cmd = 'ps aux | grep -v  grep | grep braind | awk \'{print $2;}\' | cut -d \' \' -f 1'
-    cmd_result = subprocess.check_output(cmd,  shell = True)
+    cmd_result = subprocess.check_output(shlex.split(cmd))
+                                        #  ,  shell = True)
     pid = cmd_result.decode("utf-8").strip()
 
     kill_cmd = 'kill -9 ' + pid  
-    subprocess.check_output(kill_cmd,  shell = True)
+    subprocess.check_output(shlex.split(kill_cmd))
+                            # ,  shell = True)
 
 def create_directory(training_filem,vocab_file,order):
     # Directory where output is saved. 
